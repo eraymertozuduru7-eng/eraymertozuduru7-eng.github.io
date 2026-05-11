@@ -3,127 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PipoOS | Gelecek Şimdi Yerel</title>
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <title>PipoOS | Enterprise Local AI Kernel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <style>
-        :root { --bg: #000; --accent: #2997ff; --gray: #86868b; --glass: rgba(22, 22, 23, 0.8); }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; overflow-x: hidden; line-height: 1.5; }
-        
-        /* Premium Nav */
-        nav { position: fixed; top: 0; width: 100%; height: 50px; background: var(--glass); backdrop-filter: blur(20px); z-index: 9999; border-bottom: 0.5px solid #333; display: flex; justify-content: center; align-items: center; gap: 30px; font-size: 13px; }
-        nav a { color: #f5f5f7; text-decoration: none; opacity: 0.8; transition: 0.3s; }
+        :root {
+            --bg: #ffffff;
+            --text: #1d1d1f;
+            --accent: #0071e3;
+            --secondary: #86868b;
+            --border: #d2d2d7;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigasyon */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
         nav a:hover { opacity: 1; color: var(--accent); }
 
-        /* Sections */
-        section { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 5%; position: relative; }
-        
-        /* Typography */
-        .hero-text { font-size: clamp(40px, 8vw, 100px); font-weight: 600; letter-spacing: -0.02em; text-align: center; }
-        .gradient-text { background: linear-gradient(180deg, #fff 0%, #888 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .sub-text { font-size: clamp(18px, 3vw, 32px); color: var(--gray); margin-top: 20px; max-width: 800px; text-align: center; }
+        /* Hero Bölümü */
+        section {
+            padding: 120px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
 
-        /* Bento Grid */
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; width: 100%; max-width: 1200px; margin-top: 50px; }
-        .bento-card { background: #161617; border-radius: 28px; padding: 40px; border: 1px solid #333; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
-        .bento-card:hover { transform: translateY(-10px); border-color: var(--accent); }
-        .bento-card h3 { font-size: 28px; margin-bottom: 15px; }
-        .bento-card p { color: var(--gray); font-size: 17px; }
+        .hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; }
+        .hero h1 { font-size: clamp(48px, 8vw, 80px); font-weight: 600; letter-spacing: -0.015em; margin-bottom: 20px; }
+        .hero p { font-size: 24px; color: var(--secondary); max-width: 700px; margin: 0 auto 40px; }
 
-        /* Teknik Detay Kartları */
-        .spec-item { width: 100%; max-width: 1000px; padding: 40px; border-bottom: 0.5px solid #333; display: flex; justify-content: space-between; align-items: center; }
-        .spec-label { font-size: 24px; font-weight: 500; }
-        .spec-value { color: var(--accent); font-family: monospace; font-size: 20px; }
+        /* Kartlar (Grid) */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 80px;
+        }
+        .card {
+            background: #f5f5f7;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { font-size: 24px; margin-bottom: 15px; }
+        .card p { color: var(--secondary); line-height: 1.6; }
 
-        /* Süzülme Animasyon Sınıfı */
-        .reveal { opacity: 0; }
+        /* Teknik Detaylar Tablosu */
+        .specs-table {
+            margin-top: 100px;
+            border-top: 1px solid var(--border);
+            text-align: left;
+        }
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 25px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .label { font-weight: 500; }
+        .value { color: var(--secondary); }
+
+        footer {
+            padding: 60px 20px;
+            font-size: 12px;
+            color: var(--secondary);
+            border-top: 1px solid var(--border);
+            margin-top: 100px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="#home">PipoOS</a>
-    <a href="#vision">Vizyon</a>
-    <a href="#core">Çekirdek</a>
-    <a href="#hardware">Donanım</a>
-    <a href="#dev">Geliştirici</a>
+    <a href="#overview">Overview</a>
+    <a href="#core">PipoCore</a>
+    <a href="#specs">Technical Specs</a>
+    <a href="https://github.com/eraymertozuduru7-eng">Developer</a>
 </nav>
 
-<section id="home">
-    <h1 class="hero-text gradient-text reveal">PipoOS.<br>Zekanın Yeni Fiziksel Hali.</h1>
-    <p class="sub-text reveal">Artık bulut yok. Bekleme yok. Sadece senin donanımın ve sınırsız potansiyel.</p>
+<section id="overview" class="hero">
+    <h1 data-aos="fade-up">PipoOS.</h1>
+    <p data-aos="fade-up" data-aos-delay="100">Enterprise-grade local AI orchestration kernel designed for high-performance systems.</p>
+    <div data-aos="fade-up" data-aos-delay="200">
+        <a href="https://github.com/eraymertozuduru7-eng/eraymertozuduru7-eng.github.io" class="btn">View on GitHub</a>
+    </div>
 </section>
 
-<section id="vision">
-    <h2 class="hero-text reveal" style="font-size: 50px;">Neden PipoOS?</h2>
-    <div class="grid-container">
-        <div class="bento-card reveal">
-            <h3>Sıfır Gecikme.</h3>
-            <p>Veri merkezlerine git-gel yapmadan, milisaniyeler içinde yerel tepki süresi.</p>
+<section id="core">
+    <div class="feature-grid">
+        <div class="card" data-aos="fade-up">
+            <h3>Full Privacy.</h3>
+            <p>Process your data locally. PipoOS ensures your information never leaves your hardware environment.</p>
         </div>
-        <div class="bento-card reveal">
-            <h3>Tam Gizlilik.</h3>
-            <p>Promplarınız senin odanda kalır. Veri sızıntısı tarihe karışıyor.</p>
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <h3>PipoCore Kernel.</h3>
+            <p>Engineered with Python and PyQt6 for seamless integration and low-latency response times.</p>
         </div>
-        <div class="bento-card reveal">
-            <h3>Bağımsızlık.</h3>
-            <p>İnternet bağlantısı kopsa bile, PipoOS seninle çalışmaya devam eder.</p>
-        </div>
-        <div class="bento-card reveal">
-            <h3>Maliyet Yok.</h3>
-            <p>Aylık abonelikler bitti. Kendi elektriğin, kendi zekan.</p>
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+            <h3>140B Support.</h3>
+            <p>Optimized for large language models, providing efficient resource management for workstation-class GPUs.</p>
         </div>
     </div>
 </section>
 
-<section id="core" style="background: #050505;">
-    <h2 class="hero-text reveal" style="font-size: 50px;">PipoCore Çekirdeği</h2>
-    <div class="grid-container">
-        <div class="bento-card reveal" style="grid-column: span 2;">
-            <h3 style="color: var(--accent);">Python & PyQt6 Mimari</h3>
-            <p>Sistem kaynaklarını doğrudan Python kernel üzerinden yöneten, yüksek verimli bir GUI katmanı. Her tıklama, her komut doğrudan CPU/GPU hattına iletilir.</p>
+<section id="specs">
+    <div class="specs-table">
+        <div class="spec-row" data-aos="fade-up">
+            <span class="label">Architecture</span>
+            <span class="value">Hybrid Local AI Kernel</span>
         </div>
-        <div class="bento-card reveal">
-            <h3>140B Optimizasyonu</h3>
-            <p>Devasa modelleri 4-bit ve 8-bit kuantizasyonla ev tipi sistemlerde çalıştırılabilir hale getirdik.</p>
+        <div class="spec-row" data-aos="fade-up">
+            <span class="label">Core Engine</span>
+            <span class="value">Python 3.12 / PipoCore Framework</span>
         </div>
-    </div>
-</section>
-
-<section id="hardware">
-    <h2 class="hero-text reveal" style="font-size: 50px;">Donanım Uyumu</h2>
-    <div class="spec-item reveal"><span class="spec-label">Grafik İşlemci</span><span class="spec-value">RX 5700 XT / RTX 6000 ADA</span></div>
-    <div class="spec-item reveal"><span class="spec-label">İşlemci</span><span class="spec-value">Intel Core i7-4930K (12 Threads)</span></div>
-    <div class="spec-item reveal"><span class="spec-label">Altyapı</span><span class="spec-value">Ollama / GGUF / Llama.cpp</span></div>
-    <div class="spec-item reveal"><span class="spec-label">OS</span><span class="spec-value">Kali Linux / Windows 11</span></div>
-</section>
-
-<section id="dev">
-    <div class="bento-card reveal" style="max-width: 600px; text-align: center;">
-        <h2 style="font-size: 40px; margin-bottom: 20px;">Eray Mert Özüduru</h2>
-        <p>Sivas merkezli, bağımsız AI geliştiricisi. PipoOS projesinin baş mimarı.</p>
-        <div style="margin-top: 30px;">
-            <span style="color: #444; border: 1px solid #444; padding: 5px 15px; border-radius: 50px;">8. Sınıf Öğrencisi</span>
-            <span style="color: #444; border: 1px solid #444; padding: 5px 15px; border-radius: 50px; margin-left: 10px;">AI Developer</span>
+        <div class="spec-row" data-aos="fade-up">
+            <span class="label">Interface</span>
+            <span class="value">PyQt6 / Native Hardware Acceleration</span>
+        </div>
+        <div class="spec-row" data-aos="fade-up">
+            <span class="label">Hardware Support</span>
+            <span class="value">High-Performance Discrete GPUs</span>
         </div>
     </div>
 </section>
 
-<footer style="padding: 50px; text-align: center; color: #444; font-size: 13px;">
-    &copy; 2026 PipoOS Projects. Tasarım Apple estetiği ile Sivas'ta geliştirildi.
+<footer>
+    <div style="max-width: 1200px; margin: 0 auto; text-align: left;">
+        <p>© 2026 PipoOS Projects. All rights reserved.</p>
+        <p style="margin-top: 10px;">This project is an open-source initiative focused on democratizing local artificial intelligence.</p>
+    </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
-    // Apple tarzı pürüzsüz belirme animasyonu
-    const sr = ScrollReveal({
-        origin: 'bottom',
-        distance: '60px',
-        duration: 1200,
-        delay: 200,
-        reset: false // Animasyonun sadece bir kez olması daha profesyoneldir
+    AOS.init({
+        duration: 800,
+        once: true,
+        easing: 'ease-in-out'
     });
-
-    sr.reveal('.reveal', { interval: 150 });
 </script>
 
 </body>
