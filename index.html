@@ -1,112 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PipoOS | The Future of Local Intelligence</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-    <style>
-        :root { --bg: #ffffff; --text: #1d1d1f; --accent: #0071e3; --secondary: #86868b; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: var(--bg); 
-            color: var(--text); 
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed; top: 0; width: 100%; height: 50px;
-            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px);
-            z-index: 1000; border-bottom: 0.5px solid #d2d2d7;
-            display: flex; justify-content: center; align-items: center; gap: 40px;
-        }
-        nav a { text-decoration: none; color: var(--text); font-size: 12px; opacity: 0.8; transition: 0.3s; }
-        nav a:hover { opacity: 1; color: var(--accent); }
-
-        /* Hero */
-        section { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 20px; text-align: center; }
-        h1 { font-size: clamp(48px, 10vw, 96px); font-weight: 600; letter-spacing: -0.02em; margin-bottom: 20px; }
-        .hero-sub { font-size: clamp(20px, 3vw, 32px); color: var(--secondary); max-width: 800px; margin-bottom: 40px; }
-
-        /* Grid */
-        .feature-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px; width: 100%; max-width: 1200px; margin-top: 50px;
-        }
-        .card { background: #f5f5f7; border-radius: 30px; padding: 60px; text-align: left; }
-        .card h3 { font-size: 32px; margin-bottom: 20px; }
-        .card p { color: var(--secondary); font-size: 19px; line-height: 1.5; }
-
-        /* Specs Table */
-        .specs-container { width: 100%; max-width: 900px; margin-top: 80px; text-align: left; }
-        .spec-row { display: flex; justify-content: space-between; padding: 30px 0; border-bottom: 1px solid #d2d2d7; font-size: 20px; }
-        .label { font-weight: 500; }
-        .value { color: var(--secondary); }
-
-        .cta-btn {
-            background: var(--accent); color: white; padding: 18px 36px;
-            border-radius: 40px; text-decoration: none; font-weight: 500;
-            font-size: 18px; transition: 0.3s; margin-top: 20px;
-        }
-        .cta-btn:hover { background: #0077ed; transform: scale(1.05); }
-
-        footer { padding: 80px 20px; color: var(--secondary); font-size: 13px; border-top: 0.5px solid #d2d2d7; width: 100%; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PipoOS Technical Overview</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+<style>
+:root{
+--bg:#fff;
+--text:#000;
+--muted:#6e6e73;
+--accent:#0071e3;
+--line:#d2d2d7;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;background:var(--bg);color:var(--text);}
+nav{
+position:fixed;top:0;width:100%;height:48px;
+backdrop-filter:saturate(180%) blur(20px);
+background:rgba(255,255,255,0.7);
+border-bottom:1px solid var(--line);
+display:flex;justify-content:center;align-items:center;gap:24px;
+font-size:12px;z-index:9999;
+}
+nav a{text-decoration:none;color:var(--text);opacity:.7;}
+section{
+min-height:100vh;
+padding:120px 8%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+h1{font-size:clamp(48px,8vw,110px);letter-spacing:-0.04em;}
+h2{font-size:clamp(36px,6vw,72px);letter-spacing:-0.03em;margin-bottom:20px;}
+p{font-size:20px;color:var(--muted);max-width:900px;line-height:1.5;}
+.block{max-width:1000px;}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:40px;}
+.card{background:#f5f5f7;border-radius:24px;padding:40px;}
+.card h3{font-size:22px;margin-bottom:10px;}
+.spec{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:20px 0;font-size:18px;}
+.cta{display:inline-block;margin-top:30px;padding:14px 28px;background:var(--accent);color:#fff;border-radius:999px;text-decoration:none;}
+footer{padding:80px 8%;border-top:1px solid var(--line);color:var(--muted);font-size:12px;}
+</style>
 </head>
 <body>
 
 <nav>
-    <a href="#overview">Overview</a>
-    <a href="#core">PipoCore</a>
-    <a href="#specs">Specs</a>
+<a href="#s1">Intro</a>
+<a href="#s2">Kernel</a>
+<a href="#s3">Architecture</a>
+<a href="#s4">Compute</a>
+<a href="#s5">Memory</a>
+<a href="#s6">Inference</a>
+<a href="#s7">GPU</a>
+<a href="#s8">Models</a>
+<a href="#s9">Security</a>
+<a href="#s10">Isolation</a>
+<a href="#s11">API</a>
+<a href="#s12">UI</a>
+<a href="#s13">Latency</a>
+<a href="#s14">Scaling</a>
+<a href="#s15">Deployment</a>
 </nav>
 
-<section id="overview">
-    <h1 data-aos="fade-up">PipoOS.</h1>
-    <p class="hero-sub" data-aos="fade-up" data-aos-delay="100">Next-generation local AI kernel architecture. Privacy redefined by performance.</p>
-    <div data-aos="fade-up" data-aos-delay="200">
-        <a href="#core" class="cta-btn">Learn more</a>
-    </div>
+<section id="s1">
+<div class="block" data-aos="fade-up">
+<h1>PipoOS</h1>
+<p>Deterministic local AI execution layer designed for high-performance inference and system-level orchestration.</p>
+</div>
 </section>
 
-<section id="core" style="background: #fafafa;">
-    <h2 h1 data-aos="fade-up" style="font-size: 56px; margin-bottom: 60px;">Engineered for Privacy.</h2>
-    <div class="feature-grid">
-        <div class="card" data-aos="fade-up">
-            <h3>Zero Data Leakage.</h3>
-            <p>PipoOS operates entirely on your local infrastructure. No cloud, no external servers, no compromises.</p>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="100">
-            <h3>PipoCore Architecture.</h3>
-            <p>Utilizing high-efficiency Python & PyQt6 orchestration to handle 140B+ parameter models on consumer-grade hardware.</p>
-        </div>
-    </div>
+<section id="s2">
+<div class="block" data-aos="fade-up">
+<h2>Core Kernel Layer</h2>
+<p>Executes scheduling, model routing, and compute allocation with deterministic prioritization logic.</p>
+</div>
 </section>
 
-<section id="specs">
-    <h2 data-aos="fade-up" style="font-size: 56px; margin-bottom: 40px;">Technical Specifications</h2>
-    <div class="specs-container">
-        <div class="spec-row" data-aos="fade-up"><span class="label">Kernel Engine</span><span class="value">PipoCore v1.0 / Python 3.12</span></div>
-        <div class="spec-row" data-aos="fade-up"><span class="label">Optimized Hardware</span><span class="value">RX 5700 XT & RTX 6000 ADA</span></div>
-        <div class="spec-row" data-aos="fade-up"><span class="label">Local Inference</span><span class="value">Ollama & GGUF Integration</span></div>
-        <div class="spec-row" data-aos="fade-up"><span class="label">Architecture</span><span class="value">Low-Latency Hybrid GUI</span></div>
-    </div>
+<section id="s3">
+<div class="block">
+<h2>System Architecture</h2>
+<p>Modular design separating inference engine, runtime abstraction, and hardware interface layer.</p>
+<div class="grid">
+<div class="card"><h3>Runtime Layer</h3><p>Manages execution threads and model lifecycle.</p></div>
+<div class="card"><h3>Hardware Layer</h3><p>Direct CUDA / ROCm integration for GPU access.</p></div>
+</div>
+</div>
 </section>
+
+<section id="s4"><div class="block"><h2>Compute Model</h2><p>Vectorized inference pipeline optimized for batch parallel execution.</p></div></section>
+
+<section id="s5"><div class="block"><h2>Memory Management</h2><p>Dynamic tensor allocation with zero-copy optimization and memory pinning.</p></div></section>
+
+<section id="s6"><div class="block"><h2>Inference Engine</h2><p>Supports GGUF, FP16, INT8 and hybrid quantization formats.</p></div></section>
+
+<section id="s7"><div class="block"><h2>GPU Acceleration</h2><p>Multi-GPU distributed inference with load-balanced scheduling.</p></div></section>
+
+<section id="s8"><div class="block"><h2>Model Support</h2><p>LLaMA, Mistral, custom transformer architectures with plug-in loaders.</p></div></section>
+
+<section id="s9"><div class="block"><h2>Security Model</h2><p>Sandboxed execution environment with syscall restriction layer.</p></div></section>
+
+<section id="s10"><div class="block"><h2>Isolation Layer</h2><p>Container-free isolation using kernel-level namespace separation.</p></div></section>
+
+<section id="s11"><div class="block"><h2>API Interface</h2><p>Low-latency local API gateway for model interaction.</p></div></section>
+
+<section id="s12"><div class="block"><h2>UI Framework</h2><p>PyQt6-based rendering engine with GPU accelerated compositing.</p></div></section>
+
+<section id="s13"><div class="block"><h2>Latency Optimization</h2><p>Pipeline fusion and speculative execution for reduced response time.</p></div></section>
+
+<section id="s14"><div class="block"><h2>Scaling Strategy</h2><p>Horizontal model partitioning across local clusters.</p></div></section>
+
+<section id="s15"><div class="block"><h2>Deployment Model</h2><p>Offline-first deployment with optional edge synchronization layer.</p>
+<a class="cta" href="https://github.com">Access Repository</a>
+</div></section>
 
 <footer>
-    <div style="max-width: 1200px; margin: 0 auto;">
-        <p>© 2026 PipoOS Projects. All rights reserved.</p>
-        <p style="margin-top: 10px; opacity: 0.6;">Designed for professional environments. Deployment ready.</p>
-    </div>
+PipoOS Technical Documentation Interface — System-level specification only.
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
-    AOS.init({ duration: 1000, once: true });
-</script>
+<script>AOS.init({duration:900,once:true});</script>
 
 </body>
 </html>
