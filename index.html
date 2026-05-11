@@ -1,116 +1,59 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PipoOS | Enterprise Local AI Kernel</title>
+    <title>PipoOS | The Future of Local Intelligence</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <style>
-        :root {
-            --bg: #ffffff;
-            --text: #1d1d1f;
-            --accent: #0071e3;
-            --secondary: #86868b;
-            --border: #d2d2d7;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        :root { --bg: #ffffff; --text: #1d1d1f; --accent: #0071e3; --secondary: #86868b; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            background-color: var(--bg); 
+            background: var(--bg); 
             color: var(--text); 
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            scroll-behavior: smooth;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
         }
 
-        /* Navigasyon */
+        /* Navigation */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 48px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: saturate(180%) blur(20px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
+            position: fixed; top: 0; width: 100%; height: 50px;
+            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px);
+            z-index: 1000; border-bottom: 0.5px solid #d2d2d7;
+            display: flex; justify-content: center; align-items: center; gap: 40px;
         }
-        nav a {
-            text-decoration: none;
-            color: var(--text);
-            font-size: 12px;
-            font-weight: 400;
-            opacity: 0.8;
-            transition: opacity 0.2s;
-        }
+        nav a { text-decoration: none; color: var(--text); font-size: 12px; opacity: 0.8; transition: 0.3s; }
         nav a:hover { opacity: 1; color: var(--accent); }
 
-        /* Hero Bölümü */
-        section {
-            padding: 120px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
+        /* Hero */
+        section { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 20px; text-align: center; }
+        h1 { font-size: clamp(48px, 10vw, 96px); font-weight: 600; letter-spacing: -0.02em; margin-bottom: 20px; }
+        .hero-sub { font-size: clamp(20px, 3vw, 32px); color: var(--secondary); max-width: 800px; margin-bottom: 40px; }
 
-        .hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; }
-        .hero h1 { font-size: clamp(48px, 8vw, 80px); font-weight: 600; letter-spacing: -0.015em; margin-bottom: 20px; }
-        .hero p { font-size: 24px; color: var(--secondary); max-width: 700px; margin: 0 auto 40px; }
-
-        /* Kartlar (Grid) */
+        /* Grid */
         .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 80px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px; width: 100%; max-width: 1200px; margin-top: 50px;
         }
-        .card {
-            background: #f5f5f7;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: left;
-            transition: transform 0.3s ease;
-        }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { font-size: 24px; margin-bottom: 15px; }
-        .card p { color: var(--secondary); line-height: 1.6; }
+        .card { background: #f5f5f7; border-radius: 30px; padding: 60px; text-align: left; }
+        .card h3 { font-size: 32px; margin-bottom: 20px; }
+        .card p { color: var(--secondary); font-size: 19px; line-height: 1.5; }
 
-        /* Teknik Detaylar Tablosu */
-        .specs-table {
-            margin-top: 100px;
-            border-top: 1px solid var(--border);
-            text-align: left;
-        }
-        .spec-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 25px 0;
-            border-bottom: 1px solid var(--border);
-        }
+        /* Specs Table */
+        .specs-container { width: 100%; max-width: 900px; margin-top: 80px; text-align: left; }
+        .spec-row { display: flex; justify-content: space-between; padding: 30px 0; border-bottom: 1px solid #d2d2d7; font-size: 20px; }
         .label { font-weight: 500; }
         .value { color: var(--secondary); }
 
-        footer {
-            padding: 60px 20px;
-            font-size: 12px;
-            color: var(--secondary);
-            border-top: 1px solid var(--border);
-            margin-top: 100px;
+        .cta-btn {
+            background: var(--accent); color: white; padding: 18px 36px;
+            border-radius: 40px; text-decoration: none; font-weight: 500;
+            font-size: 18px; transition: 0.3s; margin-top: 20px;
         }
+        .cta-btn:hover { background: #0077ed; transform: scale(1.05); }
 
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: #fff;
-            padding: 12px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            margin-top: 20px;
-        }
+        footer { padding: 80px 20px; color: var(--secondary); font-size: 13px; border-top: 0.5px solid #d2d2d7; width: 100%; }
     </style>
 </head>
 <body>
@@ -118,70 +61,51 @@
 <nav>
     <a href="#overview">Overview</a>
     <a href="#core">PipoCore</a>
-    <a href="#specs">Technical Specs</a>
-    <a href="https://github.com/eraymertozuduru7-eng">Developer</a>
+    <a href="#specs">Specs</a>
 </nav>
 
-<section id="overview" class="hero">
+<section id="overview">
     <h1 data-aos="fade-up">PipoOS.</h1>
-    <p data-aos="fade-up" data-aos-delay="100">Enterprise-grade local AI orchestration kernel designed for high-performance systems.</p>
+    <p class="hero-sub" data-aos="fade-up" data-aos-delay="100">Next-generation local AI kernel architecture. Privacy redefined by performance.</p>
     <div data-aos="fade-up" data-aos-delay="200">
-        <a href="https://github.com/eraymertozuduru7-eng/eraymertozuduru7-eng.github.io" class="btn">View on GitHub</a>
+        <a href="#core" class="cta-btn">Learn more</a>
     </div>
 </section>
 
-<section id="core">
+<section id="core" style="background: #fafafa;">
+    <h2 h1 data-aos="fade-up" style="font-size: 56px; margin-bottom: 60px;">Engineered for Privacy.</h2>
     <div class="feature-grid">
         <div class="card" data-aos="fade-up">
-            <h3>Full Privacy.</h3>
-            <p>Process your data locally. PipoOS ensures your information never leaves your hardware environment.</p>
+            <h3>Zero Data Leakage.</h3>
+            <p>PipoOS operates entirely on your local infrastructure. No cloud, no external servers, no compromises.</p>
         </div>
         <div class="card" data-aos="fade-up" data-aos-delay="100">
-            <h3>PipoCore Kernel.</h3>
-            <p>Engineered with Python and PyQt6 for seamless integration and low-latency response times.</p>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="200">
-            <h3>140B Support.</h3>
-            <p>Optimized for large language models, providing efficient resource management for workstation-class GPUs.</p>
+            <h3>PipoCore Architecture.</h3>
+            <p>Utilizing high-efficiency Python & PyQt6 orchestration to handle 140B+ parameter models on consumer-grade hardware.</p>
         </div>
     </div>
 </section>
 
 <section id="specs">
-    <div class="specs-table">
-        <div class="spec-row" data-aos="fade-up">
-            <span class="label">Architecture</span>
-            <span class="value">Hybrid Local AI Kernel</span>
-        </div>
-        <div class="spec-row" data-aos="fade-up">
-            <span class="label">Core Engine</span>
-            <span class="value">Python 3.12 / PipoCore Framework</span>
-        </div>
-        <div class="spec-row" data-aos="fade-up">
-            <span class="label">Interface</span>
-            <span class="value">PyQt6 / Native Hardware Acceleration</span>
-        </div>
-        <div class="spec-row" data-aos="fade-up">
-            <span class="label">Hardware Support</span>
-            <span class="value">High-Performance Discrete GPUs</span>
-        </div>
+    <h2 data-aos="fade-up" style="font-size: 56px; margin-bottom: 40px;">Technical Specifications</h2>
+    <div class="specs-container">
+        <div class="spec-row" data-aos="fade-up"><span class="label">Kernel Engine</span><span class="value">PipoCore v1.0 / Python 3.12</span></div>
+        <div class="spec-row" data-aos="fade-up"><span class="label">Optimized Hardware</span><span class="value">RX 5700 XT & RTX 6000 ADA</span></div>
+        <div class="spec-row" data-aos="fade-up"><span class="label">Local Inference</span><span class="value">Ollama & GGUF Integration</span></div>
+        <div class="spec-row" data-aos="fade-up"><span class="label">Architecture</span><span class="value">Low-Latency Hybrid GUI</span></div>
     </div>
 </section>
 
 <footer>
-    <div style="max-width: 1200px; margin: 0 auto; text-align: left;">
+    <div style="max-width: 1200px; margin: 0 auto;">
         <p>© 2026 PipoOS Projects. All rights reserved.</p>
-        <p style="margin-top: 10px;">This project is an open-source initiative focused on democratizing local artificial intelligence.</p>
+        <p style="margin-top: 10px; opacity: 0.6;">Designed for professional environments. Deployment ready.</p>
     </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
-    AOS.init({
-        duration: 800,
-        once: true,
-        easing: 'ease-in-out'
-    });
+    AOS.init({ duration: 1000, once: true });
 </script>
 
 </body>
